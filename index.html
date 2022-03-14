@@ -38,7 +38,7 @@
                             </div>
                             <ul class="list-unstyled">
                                 <li class="text-black" contentEditable="true">Delwar </li>
-                                <li class="text-muted mt-1"><span class="text-black">Invoice</span> #12345</li>
+                                <li class="text-muted mt-1"><span class="text-black">Invoice #<span id="randomid">12345</span></li>
                                 <li class="text-black mt-1" id="date" contentEditable="true">April 17 2021</li>
                                 <li class="text-black mt-1" id="time" contentEditable="true">11:01:00 am</li>
                             </ul>
@@ -133,6 +133,9 @@
             parent.insertAdjacentHTML('beforeend', newChild);
 
         }
+
+        document.getElementById('randomid').innerText=(""+Math.random()).substring(2,7);
+        
     </script>
 </body>
 
