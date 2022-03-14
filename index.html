@@ -24,56 +24,57 @@
 
 <body>
 
-    <div class="container mt-5" style="margin-bottom: 400px;">
+    <div class="container mt-5" style="margin-bottom: 20px;">
         <div class="row mt-5">
             <div class="col-md-6 col-12 mx-auto p-3">
-                <div class="card"contentEditable="true" id="recipt">
+                <div class="card" id="recipt">
                     <div class="card-body mx-4">
-                        <div class="container">
+                        <div id="item-container" class="container">
                             <div class="title text-center my-3">
-                                <h5 class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
-                                <p>Lorem ipsum dolor sit amet.</p>
-                                <h4>Lorem ipsum dolor sit amet.</h4>
+                                <h5 class="" contentEditable="true">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit.</h5>
+                                <p contentEditable="true">Lorem ipsum dolor sit amet.</p>
+                                <h4 contentEditable="true">Lorem ipsum dolor sit amet.</h4>
                             </div>
                             <ul class="list-unstyled">
-                                <li class="text-black">Delwar </li>
+                                <li class="text-black" contentEditable="true">Delwar </li>
                                 <li class="text-muted mt-1"><span class="text-black">Invoice</span> #12345</li>
-                                <li class="text-black mt-1">April 17 2021</li>
-                                <li class="text-black mt-1">11:01:00 am</li>
+                                <li class="text-black mt-1" id="date" contentEditable="true">April 17 2021</li>
+                                <li class="text-black mt-1" id="time" contentEditable="true">11:01:00 am</li>
                             </ul>
                             <hr style="border: 2px solid black;">
                             <div class="row">
                                 <div class="col-8">
-                                    <p>Pro Package</p>
+                                    <p contentEditable="true">Pro Package</p>
                                 </div>
                                 <div class="col-2">
-                                    <p class="float-end">$199.00
+                                    <p class="float-end" contentEditable="true">$199.00
                                     </p>
                                 </div>
                                 <hr style="border: 1px solid black;">
                             </div>
                             <div class="row">
                                 <div class="col-8">
-                                    <p>Consulting</p>
+                                    <p contentEditable="true">Consulting</p>
                                 </div>
                                 <div class="col-2">
-                                    <p class="float-end">$100.00
+                                    <p class="float-end" contentEditable="true">$100.00
                                     </p>
                                 </div>
                                 <hr style="border: 1px solid black;">
                             </div>
+
                             <div class="row">
                                 <div class="col-8">
-                                    <p>Support</p>
+                                    <p contentEditable="true">Support</p>
                                 </div>
                                 <div class="col-2">
-                                    <p class="float-end">$10.00
+                                    <p class="float-end" contentEditable="true">$10.00
                                     </p>
                                 </div>
                                 <hr style="border: 1px solid black;">
                             </div>
-                            <div class="row text-black">
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -82,6 +83,7 @@
         <div class="text-center">
             <a class="btn btn-success text-capitalize border-0" onclick="printDiv()"><i
                     class="fas fa-print text-white"></i> Print</a>
+            <a class="btn btn-primary ms-2 text-capitalize border-0" onclick="addChild()"><i class="fas fa-plus"></i> Add Item</a>
         </div>
     </div>
 
@@ -103,6 +105,33 @@
             window.print();
 
             document.body.innerHTML = originalContents;
+        }
+
+        let updateDateTime = () => {
+            document.getElementById('date').innerText = new Date().toLocaleDateString();
+            document.getElementById('time').innerText = new Date().toLocaleTimeString();
+
+
+        }
+        updateDateTime();
+
+
+
+
+        const addChild = () => {
+            let parent = document.getElementById('item-container');
+            let newChild = ` <div class="row">
+                                <div class="col-8">
+                                    <p contentEditable="true">Support</p>
+                                </div>
+                                <div class="col-2">
+                                    <p class="float-end" contentEditable="true">$10.00
+                                    </p>
+                                </div>
+                                <hr style="border: 1px solid black;">
+                            </div>`;
+            parent.insertAdjacentHTML('beforeend', newChild);
+
         }
     </script>
 </body>
